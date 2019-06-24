@@ -85,9 +85,6 @@ newclient () {
 		echo "</key>"
 		echo "key-direction 1"
 
-		echo "<tls-auth>"
-		cat "/etc/openvpn/tls-auth.key"
-		echo "</tls-auth>"
 	} >> "$homeDir/$1.ovpn"
 }
 
@@ -578,13 +575,9 @@ echo "crl-verify crl.pem
 ca ca.crt
 cert $SERVER_NAME.crt
 key $SERVER_NAME.key
-tls-auth tls-auth.key 0
 dh dh.pem
-auth SHA256
-$CIPHER
-tls-server
-tls-version-min 1.2
-tls-cipher TLS-DHE-RSA-WITH-AES-128-GCM-SHA256
+auth none
+cipher none
 status openvpn.log
 verb 3" >> /etc/openvpn/server.conf
 
@@ -708,12 +701,9 @@ persist-key
 persist-tun
 remote-cert-tls server
 verify-x509-name $SERVER_NAME name
-auth SHA256
+auth none
 auth-nocache
-$CIPHER
-tls-client
-tls-version-min 1.2
-tls-cipher TLS-DHE-RSA-WITH-AES-128-GCM-SHA256
+cipher none
 setenv opt block-outside-dns
 verb 3" >> /etc/openvpn/client-template.txt
 
