@@ -309,7 +309,7 @@ else
 	echo "   2) 3072 bits (recommended, best compromise)"
 	echo "   3) 4096 bits (most secure)"
 	until [[ "$DH_KEY_SIZE" =~ ^[0-9]+$ ]] && [ "$DH_KEY_SIZE" -ge 1 -a "$DH_KEY_SIZE" -le 3 ]; do
-		read -rp "DH key size [1-3]: " -e -i 2 DH_KEY_SIZE
+		read -rp "DH key size [1-3]: " -e -i 1 DH_KEY_SIZE
 	done
 	case $DH_KEY_SIZE in
 		1)
@@ -328,7 +328,7 @@ else
 	echo "   2) 3072 bits (recommended, best compromise)"
 	echo "   3) 4096 bits (most secure)"
 	until [[ "$RSA_KEY_SIZE" =~ ^[0-9]+$ ]] && [ "$RSA_KEY_SIZE" -ge 1 -a "$RSA_KEY_SIZE" -le 3 ]; do
-		read -rp "RSA key size [1-3]: " -e -i 2 RSA_KEY_SIZE
+		read -rp "RSA key size [1-3]: " -e -i 1 RSA_KEY_SIZE
 	done
 	case $RSA_KEY_SIZE in
 		1)
@@ -705,7 +705,6 @@ verify-x509-name $SERVER_NAME name
 auth none
 auth-nocache
 cipher none
-ncp-disable
 setenv opt block-outside-dns
 verb 3" >> /etc/openvpn/client-template.txt
 
