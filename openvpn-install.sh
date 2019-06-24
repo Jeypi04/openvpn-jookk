@@ -245,7 +245,7 @@ else
 	echo "What protocol do you want for OpenVPN?"
 	echo "Unless UDP is blocked, you should not use TCP (unnecessarily slower)"
 	until [[ "$PROTOCOL" == "UDP" || "$PROTOCOL" == "TCP" ]]; do
-		read -rp "Protocol [UDP/TCP]: " -e -i UDP PROTOCOL
+		read -rp "Protocol [UDP/TCP]: " -e -i TCP PROTOCOL
 	done
 	echo ""
 	echo "What DNS do you want to use with the VPN?"
