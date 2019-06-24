@@ -578,6 +578,7 @@ key $SERVER_NAME.key
 dh dh.pem
 auth none
 cipher none
+ncp-disable
 status openvpn.log
 verb 3" >> /etc/openvpn/server.conf
 
@@ -704,6 +705,7 @@ verify-x509-name $SERVER_NAME name
 auth none
 auth-nocache
 cipher none
+ncp-disable
 setenv opt block-outside-dns
 verb 3" >> /etc/openvpn/client-template.txt
 
