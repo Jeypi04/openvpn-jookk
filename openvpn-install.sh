@@ -579,9 +579,6 @@ dh dh.pem
 auth none
 cipher none
 ncp-disable
-plugin /etc/openvpn/openvpn-auth-pam.so /etc/pam.d/login
-client-cert-not-required
-username-as-common-name
 status openvpn.log
 verb 3" >> /etc/openvpn/server.conf
 
@@ -705,7 +702,6 @@ persist-key
 persist-tun
 remote-cert-tls server
 verify-x509-name $SERVER_NAME name
-auth-user-pass
 auth none
 auth-nocache
 cipher none
